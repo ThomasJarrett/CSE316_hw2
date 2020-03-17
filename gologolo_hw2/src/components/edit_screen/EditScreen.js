@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import Navbar from './Navbar.js'
 import TextEditSidebar from './TextEditSidebar.js'
 import TextEditWorkspace from './TextEditWorkspace.js'
-
+//test
 export class EditScreen extends Component {
     constructor(props) {
         super(props);
