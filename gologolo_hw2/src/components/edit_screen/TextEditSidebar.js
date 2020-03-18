@@ -9,7 +9,12 @@ class TextEditSidebar extends Component {
         this.state = {
             textColor : "#00FF00",
             fontSize : 24,
-            backgroundColor : "#FF0000"
+            backgroundColor : "#FF0000",
+            borderColor : "FF0000",
+            borderRadius : 10,
+            borderWidth : 5,
+            padding : 5,
+            margin : 5
         }
     }
 
@@ -27,6 +32,30 @@ class TextEditSidebar extends Component {
         this.props.logo.backgroundColor=event.target.value;
         this.setState( {backgroundColor: event.target.value }, this.completeUserEditing);
     }
+    handleBorderColorChange=(event)=>{
+        this.props.logo.borderColor=event.target.value;
+        this.setState( {borderColor: event.target.value }, this.completeUserEditing);
+    }
+
+    handleBorderRadiusChange=(event)=>{
+        this.props.logo.borderRadius=event.target.value;
+        this.setState( {borderRadius: event.target.value }, this.completeUserEditing);
+    }
+
+    handleBorderWidthChange=(event)=>{
+        this.props.logo.borderWidth=event.target.value;
+        this.setState( {borderWidth: event.target.value }, this.completeUserEditing);
+    }
+
+    handlePaddingChange=(event)=>{
+        this.props.logo.padding=event.target.value;
+        this.setState( {padding: event.target.value }, this.completeUserEditing);
+    }
+    handleMarginChange=(event)=>{
+        this.props.logo.margin=event.target.value;
+        this.setState( {margin: event.target.value }, this.completeUserEditing);
+    }
+
 
     handleFontSizeChange = (event) => {
         console.log("handleTextColorChangeComplete to " + event.target.value);
@@ -37,8 +66,9 @@ class TextEditSidebar extends Component {
     completeUserEditing = () => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
-       // this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize, this.state.backgroundColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.props.logo.textColor, this.props.logo.fontSize, this.props.logo.backgroundColor);
+        //this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize, this.state.backgroundColor);
+        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.props.logo.textColor, this.props.logo.fontSize, this.props.logo.backgroundColor,this.props.logo.borderColor,
+        this.props.logo.borderRadius,this.props.logo.borderWidth, this.props.logo.padding,this.props.logo.margin);
     }
 
     render() {
@@ -80,6 +110,51 @@ class TextEditSidebar extends Component {
                                 <input type="color"
                                        onChange={this.handleBackgroundColorChange}
                                        value={this.props.logo.backgroundColor} 
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Border Color:</div>
+                            <div className="col s9">
+                                <input type="color"
+                                       onChange={this.handleBorderColorChange}
+                                       value={this.props.logo.borderColor} 
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Border Radius:</div>
+                            <div className="col s9">
+                                <input type="range" min="0" max="100"
+                                       onChange={this.handleBorderRadiusChange}
+                                       value={this.props.logo.borderRadius} 
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Border Width:</div>
+                            <div className="col s9">
+                                <input type="range"
+                                       onChange={this.handleBorderWidthChange}
+                                       value={this.props.logo.borderWidth} 
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Padding:</div>
+                            <div className="col s9">
+                                <input type="range"
+                                       onChange={this.handlePaddingChange}
+                                       value={this.props.logo.padding} 
+                                />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col s4">Margin:</div>
+                            <div className="col s9">
+                                <input type="range"
+                                       onChange={this.handleMarginChange}
+                                       value={this.props.logo.margin} 
                                 />
                             </div>
                         </div>
