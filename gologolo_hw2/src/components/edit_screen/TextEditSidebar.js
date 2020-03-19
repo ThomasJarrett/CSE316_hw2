@@ -82,7 +82,7 @@ class TextEditSidebar extends Component {
         if (undoDisabled)
             undoClass += " disabled";
         return (
-            <div className="" style={{width : "40%"}}>
+            <div className="" style={{width : "30%",position:"absolute", top: "0%", left: "0%", height: "100%"}}>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <button className="waves-effect waves-light btn-small">&#9998;</button>

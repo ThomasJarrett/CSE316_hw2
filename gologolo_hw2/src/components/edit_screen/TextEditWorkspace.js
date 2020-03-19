@@ -15,8 +15,8 @@ class TextEditWorkspace extends Component {
                 margin: this.props.logo.margin+"px",
                 borderStyle: "solid",
                 position: "absolute",    
-                top: "10%",
-                left: "41.5%"
+                top: "0%",
+                left: "30%"
             }
         }
         //col s8

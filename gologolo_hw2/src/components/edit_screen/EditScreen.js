@@ -30,7 +30,7 @@ export class EditScreen extends Component {
         return (
             <div className="container">
                 <Navbar goToHomeCallback={this.props.goToHomeCallback} />
-                <div className="row">
+                <div className="row" style={{display:"grid", position: "absolute",height: "90%",top: "10%",left: "5%",width: "90%"}}>
                     <TextEditSidebar
                         logo={this.props.logo}
                         changeLogoCallback={this.props.changeLogoCallback}
