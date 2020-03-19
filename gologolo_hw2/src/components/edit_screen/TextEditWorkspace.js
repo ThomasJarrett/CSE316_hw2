@@ -16,6 +16,7 @@ class TextEditWorkspace extends Component {
                 borderStyle: "solid"
             }
         }
+        //col s8
         return (
             <div className="col s8"
                 style={ styles.container }>

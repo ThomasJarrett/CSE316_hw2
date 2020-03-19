@@ -70,14 +70,14 @@ class TextEditSidebar extends Component {
         this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.props.logo.textColor, this.props.logo.fontSize, this.props.logo.backgroundColor,this.props.logo.borderColor,
         this.props.logo.borderRadius,this.props.logo.borderWidth, this.props.logo.padding,this.props.logo.margin);
     }
-
+    //card-panel col s4
     render() {
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
         if (undoDisabled)
             undoClass += " disabled";
         return (
-            <div className="card-panel col s4">
+            <div className="card-panel col s4" style={{width : "40%"}}>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <button className="waves-effect waves-light btn-small">&#9998;</button>
@@ -104,59 +104,53 @@ class TextEditSidebar extends Component {
                                     value={this.props.logo.fontSize} />
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="col s4">Backround Color:</div>
-                            <div className="col s9">
+                        <div className="row" >
+                            <span className="">Backround Color:</span>
+                            
                                 <input type="color"
                                        onChange={this.handleBackgroundColorChange}
                                        value={this.props.logo.backgroundColor} 
+                                       
                                 />
-                            </div>
+                            
                         </div>
                         <div className="row">
-                            <div className="col s4">Border Color:</div>
-                            <div className="col s9">
+                            <span >Border Color:</span>
                                 <input type="color"
                                        onChange={this.handleBorderColorChange}
                                        value={this.props.logo.borderColor} 
                                 />
-                            </div>
+                            
                         </div>
                         <div className="row">
-                            <div className="col s4">Border Radius:</div>
-                            <div className="col s9">
+                            <span>Border Radius:</span>
                                 <input type="range" min="0" max="100"
                                        onChange={this.handleBorderRadiusChange}
                                        value={this.props.logo.borderRadius} 
                                 />
-                            </div>
+                            
                         </div>
                         <div className="row">
-                            <div className="col s4">Border Width:</div>
-                            <div className="col s9">
+                            <span>Border Width:</span>
                                 <input type="range"
                                        onChange={this.handleBorderWidthChange}
                                        value={this.props.logo.borderWidth} 
                                 />
-                            </div>
+                            
                         </div>
                         <div className="row">
-                            <div className="col s4">Padding:</div>
-                            <div className="col s9">
+                            <span>Padding:</span>                   
                                 <input type="range"
                                        onChange={this.handlePaddingChange}
                                        value={this.props.logo.padding} 
                                 />
-                            </div>
                         </div>
                         <div className="row">
-                            <div className="col s4">Margin:</div>
-                            <div className="col s9">
+                            <span>Margin:</span>
                                 <input type="range"
                                        onChange={this.handleMarginChange}
                                        value={this.props.logo.margin} 
                                 />
-                            </div>
                         </div>
                     </div>
                 </div>
