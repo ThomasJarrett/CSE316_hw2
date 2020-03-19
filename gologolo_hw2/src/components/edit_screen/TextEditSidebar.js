@@ -74,10 +74,15 @@ class TextEditSidebar extends Component {
     render() {
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
+        const styles = {
+            container: {
+                margin: "0px"
+            }
+        };
         if (undoDisabled)
             undoClass += " disabled";
         return (
-            <div className="card-panel col s4" style={{width : "40%"}}>
+            <div className="" style={{width : "40%"}}>
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <button className="waves-effect waves-light btn-small">&#9998;</button>
@@ -96,15 +101,16 @@ class TextEditSidebar extends Component {
                                 />
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row" >
                             <div className="col s4">Font Size:</div>
                             <div className="col s8">
                                 <input type="range" min="4" max="144" 
                                     onChange={this.handleFontSizeChange}
-                                    value={this.props.logo.fontSize} />
+                                    value={this.props.logo.fontSize} 
+                                    style={styles.container}/>
                             </div>
                         </div>
-                        <div className="row" >
+                        <div className="row" style={styles.container}>
                             <span className="">Backround Color:</span>
                             
                                 <input type="color"
@@ -114,7 +120,7 @@ class TextEditSidebar extends Component {
                                 />
                             
                         </div>
-                        <div className="row">
+                        <div className="row" style={styles.container}>
                             <span >Border Color:</span>
                                 <input type="color"
                                        onChange={this.handleBorderColorChange}
@@ -122,34 +128,38 @@ class TextEditSidebar extends Component {
                                 />
                             
                         </div>
-                        <div className="row">
+                        <div className="row" style={styles.container}>
                             <span>Border Radius:</span>
                                 <input type="range" min="0" max="100"
                                        onChange={this.handleBorderRadiusChange}
                                        value={this.props.logo.borderRadius} 
+                                       style={styles.container}
                                 />
                             
                         </div>
-                        <div className="row">
+                        <div className="row" style={styles.container}>
                             <span>Border Width:</span>
                                 <input type="range"
                                        onChange={this.handleBorderWidthChange}
-                                       value={this.props.logo.borderWidth} 
+                                       value={this.props.logo.borderWidth}
+                                       style={styles.container} 
                                 />
                             
                         </div>
-                        <div className="row">
+                        <div className="row" style={styles.container}>
                             <span>Padding:</span>                   
                                 <input type="range"
                                        onChange={this.handlePaddingChange}
                                        value={this.props.logo.padding} 
+                                       style={styles.container}
                                 />
                         </div>
-                        <div className="row">
+                        <div className="row" style={styles.container}>
                             <span>Margin:</span>
                                 <input type="range"
                                        onChange={this.handleMarginChange}
                                        value={this.props.logo.margin} 
+                                       style={styles.container}
                                 />
                         </div>
                     </div>

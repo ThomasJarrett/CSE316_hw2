@@ -13,12 +13,15 @@ class TextEditWorkspace extends Component {
                 borderWidth: this.props.logo.borderWidth+"px",
                 padding: this.props.logo.padding+"px",
                 margin: this.props.logo.margin+"px",
-                borderStyle: "solid"
+                borderStyle: "solid",
+                position: "absolute",    
+                top: "10%",
+                left: "41.5%"
             }
         }
         //col s8
         return (
-            <div className="col s8"
+            <div className=""
                 style={ styles.container }>
                 {this.props.logo.text}
             </div>
