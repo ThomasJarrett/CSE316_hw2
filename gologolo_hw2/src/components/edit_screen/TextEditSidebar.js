@@ -92,23 +92,20 @@ class TextEditSidebar extends Component {
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                         <span className="card-title">Text</span>
-                        <div className="row">
-                            <div className="col s4">Color:</div>
-                            <div className="col s8">
+                        <div className="row" style={styles.container}>
+                            <span className="">Color:</span>
                                 <input type="color"
                                         onChange={this.handleTextColorChange}
                                         value={this.props.logo.textColor}
                                 />
-                            </div>
                         </div>
-                        <div className="row" >
-                            <div className="col s4">Font Size:</div>
-                            <div className="col s8">
+                        <div className="row" style={styles.container}>
+                            <span >Font Size:</span>
                                 <input type="range" min="4" max="144" 
                                     onChange={this.handleFontSizeChange}
                                     value={this.props.logo.fontSize} 
                                     style={styles.container}/>
-                            </div>
+                            
                         </div>
                         <div className="row" style={styles.container}>
                             <span className="">Backround Color:</span>
