@@ -87,6 +87,10 @@ export class jsTPS {
         
     }
 
+    redoTransaction() {
+        this.doTransaction();
+    }
+
     clearAllTransactions() {
         // REMOVE ALL THE TRANSACTIONS
         this.transactions = [];
