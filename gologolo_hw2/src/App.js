@@ -166,7 +166,8 @@ class App extends Component {
       padding: newPadding,
       margin: newMargin
     };
-
+    console.log("The post Edit Logo: "+this.logoToString(postEditLogo));
+    console.log("The old logo : "+this.logoToString(oldLogo));
     // NOW BUILD THE TRANSACTION OBJECT
     let transaction = new ChangeLogo_Transaction(
       this.changeLogo, oldLogo, postEditLogo);

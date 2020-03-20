@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
 class TextEditSidebar extends Component {
     constructor() {
         super();
@@ -25,53 +24,63 @@ class TextEditSidebar extends Component {
     handleTextColorChange = (event) => {
         console.log("handleTextColorChange to " + event.target.value);
         this.props.logo.textColor=event.target.value;
-        this.setState({ textColor: event.target.value }, this.completeUserEditing);
+        this.setState({ textColor: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
 
     handleBackgroundColorChange=(event) => {
         this.props.logo.backgroundColor=event.target.value;
-        this.setState( {backgroundColor: event.target.value }, this.completeUserEditing);
+        this.setState( {backgroundColor: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
     handleBorderColorChange=(event)=>{
         this.props.logo.borderColor=event.target.value;
-        this.setState( {borderColor: event.target.value }, this.completeUserEditing);
+        this.setState( {borderColor: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
 
     handleBorderRadiusChange=(event)=>{
         this.props.logo.borderRadius=event.target.value;
-        this.setState( {borderRadius: event.target.value }, this.completeUserEditing);
+        this.setState( {borderRadius: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
 
     handleBorderWidthChange=(event)=>{
         this.props.logo.borderWidth=event.target.value;
-        this.setState( {borderWidth: event.target.value }, this.completeUserEditing);
+        this.setState( {borderWidth: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
 
     handlePaddingChange=(event)=>{
         this.props.logo.padding=event.target.value;
-        this.setState( {padding: event.target.value }, this.completeUserEditing);
+        this.setState( {padding: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
     handleMarginChange=(event)=>{
         this.props.logo.margin=event.target.value;
-        this.setState( {margin: event.target.value }, this.completeUserEditing);
+        this.setState( {margin: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
 
 
     handleFontSizeChange = (event) => {
         console.log("handleTextColorChangeComplete to " + event.target.value);
         this.props.logo.fontSize=event.target.value;
-        this.setState({ fontSize: event.target.value }, this.completeUserEditing);
+        //console.log("new Logo "+this.logoToString(this.props.logo));
+        //console.log("old Logo "+this.logoToString(this.tempLogo));
+        this.setState({ fontSize: event.target.value }, this.completeUserEditing(this.tempLogo));
     }
 
-    completeUserEditing = () => {
+
+    completeUserEditing = (tLogo) => {
         console.log("completeUserEditing");
         console.log("this.state.textColor: " + this.state.textColor);
         //this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.state.textColor, this.state.fontSize, this.state.backgroundColor);
-        this.props.changeLogoCallback(this.props.logo, this.props.logo.key, this.props.logo.text, this.props.logo.textColor, this.props.logo.fontSize, this.props.logo.backgroundColor,this.props.logo.borderColor,
+    
+        this.props.changeLogoCallback(tLogo, this.props.logo.key, this.props.logo.text, this.props.logo.textColor, this.props.logo.fontSize, this.props.logo.backgroundColor,this.props.logo.borderColor,
         this.props.logo.borderRadius,this.props.logo.borderWidth, this.props.logo.padding,this.props.logo.margin);
+
+        //this.props.changeLogoCallback(this.props.logo, this.tempLogo.key, this.tempLogo.text, this.tempLogo.textColor, this.tempLogo.fontSize, this.tempLogo.backgroundColor,this.tempLogo.borderColor,
+          // this.tempLogo.borderRadius,this.tempLogo.borderWidth, this.tempLogo.padding,this.tempLogo.margin);
     }
+   
     //card-panel col s4
     render() {
+        //const clone = require('lodash/clone');
+        this.tempLogo=JSON.parse(JSON.stringify(this.props.logo));
         let undoDisabled = !this.props.canUndo();
         let undoClass = "waves-effect waves-light btn-small";
         const styles = {
@@ -164,6 +173,22 @@ class TextEditSidebar extends Component {
             </div>
         )
     }
+      // CREATES AND RETURNS A TEXTUAL SUMMARY OF logoToDisplay
+  logoToString = (logoToDisplay) => {
+    let text = "";
+    text += "{\n";
+    text += "\ttext: " + logoToDisplay.text + "\n";
+    text += "\ttextColor: " + logoToDisplay.textColor + "\n";
+    text += "\tfontSize: " + logoToDisplay.fontSize + "\n";
+    text += "\tbackgroundColor: "+ logoToDisplay.backgroundColor+"\n";
+    text += "\tborderColor: "+ logoToDisplay.borderColor+"\n";
+    text += "\tborderRadius: "+ logoToDisplay.borderRadius+"\n";
+    text += "\tborderWidth: "+ logoToDisplay.borderWidth+"\n";
+    text += "\tpadding: "+ logoToDisplay.padding+ "\n";
+    text += "\tmargin: "+ logoToDisplay.margin+"\n";
+    text += "}";
+    return text;
+  }
 }
 
 export default TextEditSidebar

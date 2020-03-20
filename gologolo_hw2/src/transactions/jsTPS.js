@@ -76,11 +76,15 @@ export class jsTPS {
     undoTransaction() {
         if (this.hasTransactionToUndo()) {
             this.performingUndo = true;
+            
             let transaction = this.transactions[this.mostRecentTransaction];
             transaction.undoTransaction();
+            
+            
             this.mostRecentTransaction--;
             this.performingUndo = false;
         }
+        
     }
 
     clearAllTransactions() {
