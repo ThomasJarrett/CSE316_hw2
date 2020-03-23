@@ -24,8 +24,8 @@ export const LogoDefaults = {
   TEXT : "goLogoLo Logo",
   TEXT_COLOR : "#FF0000",
   FONT_SIZE : 24,
-  BACKGROUND_COLOR: "00FF00",
-  BORDER_COLOR: "0000FF",
+  BACKGROUND_COLOR: "#00FF00",
+  BORDER_COLOR: "#0000FF",
   BORDER_RADIUS: 2,
   BORDER_WIDTH: 5,
   PADDING: 5,
@@ -176,6 +176,13 @@ class App extends Component {
     // CAUSE IT TO EXECUTE (i.e. DO IT)
     this.tps.addTransaction(transaction);
   }
+  addNewTextToLogo=(oldLogo, newText)=>{
+    let newLogo=JSON.parse(JSON.stringify(oldLogo));
+    newLogo.text=newText;
+    let transaction = new ChangeLogo_Transaction(this.changeLogo,oldLogo, newLogo);
+    this.tps.addTransaction(transaction);
+  }
+
 
   /**
    * undo - This callback function lets the EditScreen undo
@@ -261,7 +268,8 @@ class App extends Component {
     const nextLogos = this.state.logos.filter(testLogo =>
       testLogo.key !== logoKey
     );
-
+    let logosString = JSON.stringify(nextLogos);
+    localStorage.setItem("recent_work", logosString);
     console.log("size of nextLogos: " + nextLogos.length);
 
     // AND SET THE STATE, WHICH SHOULD FORCE A render
@@ -381,6 +389,8 @@ class App extends Component {
           canUndo={this.canUndo}                          // TRANSACTION CALLBACK
           redoCallback={this.redo}
           canRedo={this.canRedo}
+          addNewTextCallback={this.addNewTextToLogo}
+          deleteCallback={this.deleteLogo}
 
         />;
       default:

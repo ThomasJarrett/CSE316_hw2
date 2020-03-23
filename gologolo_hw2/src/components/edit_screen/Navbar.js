@@ -29,13 +29,20 @@ class Navbar extends React.Component {
                 onClick={this.handleGoHome}>
             goLogoLo
           </div>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li style={ {cursor: "pointer"} }>&#128465;</li>
-          </ul>
+          <div style={ {cursor: "pointer", 
+                position: "absolute",
+                left: "85%",
+                width: "15%",
+                textAlign: "right",
+                top: "0%",
+                zIndex: 10
+              } }
+              onClick={this.props.deleteCallback}>&#128465;
+          </div>
         </div>
       </nav>
-    )
-  };
+    );
+  }
 }
 
 export default Navbar;
